@@ -96,8 +96,19 @@ type Options struct {
 	// is input.
 	Default string
 
+	// Prefix allows you to set a prefix before messages.
+	Prefix string
+
+	// Suffix allows you to change the suffix after error messages.
+	// By default, ErrSuffix is '\n\n'.
+	ErrSuffix string
+
 	// Loop loops asking user to input until getting valid input.
 	Loop bool
+
+	// LoopOrder sets the order comment for loops. By default,
+	// LoopOrder is 'Enter a value'.
+	LoopOrder string
 
 	// Required returns error when input is empty.
 	Required bool
@@ -125,6 +136,9 @@ type Options struct {
 	// ValidateFunc is function to do extra validation of user
 	// input string. By default, it does nothing (just returns nil).
 	ValidateFunc ValidateFunc
+
+	// HideValidateFuncErrHead hides error comment ('Failed to validate input string:')
+	HideValidateFuncErr bool
 }
 
 // validateFunc returns ValidateFunc. If it's specified by
